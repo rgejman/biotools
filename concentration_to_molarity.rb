@@ -9,7 +9,7 @@ require 'ruby-units'
 
 if ARGV.length != 4
   puts "Convert concentration (xg/xl) to molarity (xM) of dsNucleic acids with known lengths."
-  puts "e.g. concentration_to_molarity 20 ng/ul 500 nM => 78.7879 nM"
+  puts "e.g. concentration_to_molarity.rb 20 ng/ul 500 nM => 78.7879 nM"
   exit
 end
 
