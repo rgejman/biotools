@@ -3,3 +3,5 @@ Some simple scripts for bioinformatics and wet bench work. These are scripts wri
 1. complement.rb => Returns the complement of an RNA/DNA sequence input.
 2. revcom.rb => Returns the reverse complement of an RNA/DNA sequence input.
 3. concentration_to_molarity.rb => Converts concentrations of the form "xg/xl" into molarity given a nucleic acid length. This is useful because nanodrops typically return concentrations in mass/volume whereas the calculations for reactions are more easily done in terms of molarity.
+
+Some of these scripts require ruby-units: gem install ruby-units
