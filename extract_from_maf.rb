@@ -17,13 +17,10 @@ for filename in entries
     output_filename = filename.gsub(".maf", ".3way.#{SPECIES.join(".")}.maf")
     File.open(directory + "/" + output_filename, "w") do |out|
       input.each_line do |line|
-        if line.chomp == ""
-          out.print line
-          next
-        end
-        specie_token = line.split(/\w/)[1]
-        next if specie_token.nil?
-        next unless SPECIES.any? {|s| specie_token.include? s }
+        tokens = line.split(/\w/)
+        next if tokens.empty? or tokens.length < 2
+        puts tokens[1]
+        next unless SPECIES.any? {|s| tokens[1].include? s }
         out.print line
       end
     end
