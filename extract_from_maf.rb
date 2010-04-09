@@ -17,7 +17,12 @@ for filename in entries
   File.open(filename, "r") do |input|
     File.open(output_filename, "w") do |out|
       input.each_line do |line|
+        if line.chomp == ""
+          out.print line
+          next
+        end
         specie_token = line.split(/\w/)[1]
+        next if specie_token.nil?
         next unless SPECIES.any? {|s| specie_token.include? s }
         out.print line
       end
