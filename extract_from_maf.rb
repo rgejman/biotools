@@ -9,12 +9,12 @@ directory = ARGV[0]
 
 SPECIES = ["hg19", "rheMac2", "canFam2"]
 
-entries = Dir.entries(directory).select {|e| e =~ /\.maf$/}
+entries = Dir.entries(directory).select {|e| e =~ /\.maf$/}.reject {|e| e.include? "way"}
 
 for filename in entries
   puts "Extracting #{filename}"
   File.open(directory + "/" + filename, "r") do |input|
-    output_filename = filename.gsub(".maf", ".3way.#{SPECIES.join(".")}.maf")
+    output_filename = filename.gsub(".maf", ".#{SPECIES.length}way.#{SPECIES.join(".")}.maf")
     File.open(directory + "/" + output_filename, "w") do |out|
       out.print input.readline #header
       input.each_line do |line|
