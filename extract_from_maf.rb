@@ -13,8 +13,8 @@ entries = Dir.entries(directory).select {|e| e =~ /\.maf$/}
 
 for filename in entries
   puts "Extracting #{filename}"
-  output_filename = filename.gsub(".maf", "3way.#{SPECIES.join(".")}.maf")
   File.open(directory + "/" + filename, "r") do |input|
+    output_filename = filename.gsub(".maf", ".3way.#{SPECIES.join(".")}.maf")
     File.open(directory + "/" + output_filename, "w") do |out|
       input.each_line do |line|
         if line.chomp == ""
