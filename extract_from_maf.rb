@@ -20,7 +20,7 @@ for filename in entries
       input.each_line do |line|
         tokens = line.split("\s")
         next if tokens.empty? or tokens.length < 2
-        next if tokens[0] == "q" or tokens[0] == "i"
+        next if tokens[0] == "q" or tokens[0] == "i" or tokens[0] == "e"
         next unless tokens[0] == "a" or SPECIES.any? {|s| tokens[1].include? s }
         out.print line
       end
