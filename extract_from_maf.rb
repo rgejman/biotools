@@ -2,9 +2,14 @@
 
 # This script will extract only the desired species from multiz multi-way alignments.
 
+puts "Usage: extract_from_maf.rb directory" unless ARGV.length == 1
+
+directory = ARGV[0]
+
+
 SPECIES = ["hg19", "rheMac2", "canFam2"]
 
-entries = Dir.entries(".").select {|e| e =~ /\.maf$/}
+entries = Dir.entries(directory).select {|e| e =~ /\.maf$/}
 
 for filename in entries
   puts "Extracting #{filename}"
