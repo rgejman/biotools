@@ -14,9 +14,9 @@ entries = Dir.entries(directory).select {|e| e =~ /\.maf$/}
 for filename in entries
   puts "Extracting #{filename}"
   output_filename = filename.gsub(".maf", "3way.#{SPECIES.join(".")}.maf")
-  File.open(filename, "r") do |in|
+  File.open(filename, "r") do |input|
     File.open(output_filename, "w") do |out|
-      in.each_line do |line|
+      input.each_line do |line|
         specie_token = line.split(/\w/)[1]
         next unless SPECIES.any? {|s| specie_token.include? s }
         out.print line
