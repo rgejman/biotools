@@ -16,11 +16,12 @@ for filename in entries
   File.open(directory + "/" + filename, "r") do |input|
     output_filename = filename.gsub(".maf", ".3way.#{SPECIES.join(".")}.maf")
     File.open(directory + "/" + output_filename, "w") do |out|
+      out.print input.readline #header
       input.each_line do |line|
         tokens = line.split("\s")
         next if tokens.empty? or tokens.length < 2
-        puts tokens[1]
-        next unless SPECIES.any? {|s| tokens[1].include? s }
+        next if tokens[0] == "q"
+        next unless tokens[0] == "a" or SPECIES.any? {|s| tokens[1].include? s }
         out.print line
       end
     end
