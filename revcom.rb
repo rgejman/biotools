@@ -13,11 +13,11 @@ NUCLEIC_BASES = ["A","C","G","T","U"]
 dna = false
 rna = false
 
-sequence = ARGV[0].strip
-sequence_arr = ARGV[0].split("")
+sequence = ARGV[0].strip.upcase
+sequence_arr = sequence.split("")
 
 unless sequence_arr.all? {|s| NUCLEIC_BASES.include? s}
-  puts "ERROR: The input sequence contains characters which are not ACGTU"
+  puts "ERROR: The input sequence contains characters which are not ACGTU."
   exit 1
 end
 
